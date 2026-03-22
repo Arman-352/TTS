@@ -1,0 +1,15 @@
+STEP 1: Install Python
+Download from https://python.org
+
+STEP 2: Download project (Code → Download ZIP)
+
+STEP 3: Open folder and double click app.py
+OR run:
+python app.py
+
+STEP 4: Open browser:
+http://127.0.0.1:5000
+
+STEP 5: Use web/index.html for UI
+
+DONE
