@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI TTS</title>
+</head>
+<body>
+  <h1>AI Text to Speech</h1>
+  <textarea id="text" placeholder="Enter text"></textarea><br><br>
+  <select id="voice">
+    <option value="default">Default</option>
+    <option value="narrator">Narrator</option>
+    <option value="female">Female</option>
+    <option value="deep">Deep</option>
+  </select><br><br>
+  <button onclick="generate()">Generate Voice</button>
+
+  <script>
+    async function generate() {
+      const text = document.getElementById('text').value;
+      const voice = document.getElementById('voice').value;
+
+      const res = await fetch('http://127.0.0.1:5000/speak', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ text, voice })
+      });
+
+      const blob = await res.blob();
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'voice.wav';
+      a.click();
+    }
+  </script>
+</body>
+</html>
